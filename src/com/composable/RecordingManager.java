@@ -171,7 +171,9 @@ public class RecordingManager {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet res = stmt.executeQuery();
 			while (res.next()) {
-				outp.add(Paths.get(res.getString(1)));
+				Path outpp = Paths.get(res.getString(1));
+				outp.add(outpp);
+				System.out.println("To export "+outpp);
 			}
 		} catch (SQLException e) {
 			System.err.println("Error reading videos for export");
@@ -222,7 +224,7 @@ public class RecordingManager {
 			sb.append(",");
 			sb.append(res.getTimestamp(3).getTime());
 			sb.append(",");
-			sb.append(res.getTimestamp(3).getTime());
+			sb.append(res.getTimestamp(4).getTime());
 			sb.append(",");
 			sb.append(res.getString(5));
 			sb.append("\n");
